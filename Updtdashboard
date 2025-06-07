@@ -1,0 +1,15 @@
+
+    <h3>💼 Microtasks Found</h3>
+    <div class="log">
+        {% if system_stats.microtasks %}
+            {% for task in system_stats.microtasks %}
+                <div class="task">
+                    <strong>r/{{ task.subreddit }}</strong> - {{ task.title }}
+                    <br>Pay: ${{ task.pay }} - Status: {{ task.status }}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No microtasks found yet...</p>
+        {% endif %}
+    </div>
+</div>
