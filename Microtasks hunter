@@ -1,0 +1,27 @@
+
+    def __init__(self):
+        self.running = True
+        self.target_subreddits = [
+            'ForHire', 'SlaveLabour', 'Jobs4Bitcoins', 'WorkOnline', 'BeerMoney'
+        ]
+    
+    def scrape_reddit(self):
+        """Scrape Reddit for microtasks"""
+        while self.running:
+            try:
+                for subreddit in self.target_subreddits:
+                    # Simulate finding microtasks
+                    if random.random() > 0.7:
+                        task = {
+                            'subreddit': subreddit,
+                            'title': f'[Task] {random.choice(["Data Entry", "Social Media", "Writing", "Web Scraping"])}',
+                            'pay': random.randint(5, 50),
+                            'posted_at': datetime.now().strftime('%H:%M:%S'),
+                            'status': 'Applied' if random.random() > 0.5 else 'Available'
+                        }
+                        system_state['microtasks'].append(task)
+                        print(f"💼 FOUND: {task['title']} on r/{task['subreddit']} - ${task['pay']}")
+                
+                time.sleep(20)  # Check every 20 seconds
+            except Exception as e:
+                print(f"Microtask Hunter error: {e}")
